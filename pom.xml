@@ -15,7 +15,7 @@
     <kie.version>6.4.0.Final</kie.version>
     <junit.version>4.11</junit.version>
     <cdi.version>1.2</cdi.version>
-    <weld.version>2.3.0.Final</weld.version>
+    <weld.version>2.3.5.Final</weld.version>
   </properties>
 
   <dependencies>
