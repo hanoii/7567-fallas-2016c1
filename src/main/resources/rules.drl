@@ -1,8 +1,10 @@
 package ar.uba.fi.fallas;
 
-rule "My First Drools Rule"
+import ar.uba.fi.fallas.Parser;
+
+rule "Carta formal a un remitente sin relación personal del que no se conoce el nombre"
   when
-    $o: Object()
+    $parser: Parser(pasiva == Parser.Cantidad.MUCHO)
   then
-    System.out.println("Rule Fired for Object: "+$o.toString());
+    System.out.println("Carta formal a un remitente sin relación personal del que no se conoce el nombre");
 end

@@ -18,7 +18,12 @@ public class App
 
     public void bootstrapDrools() {
         // The KieSession was injected so we can use it now
-        kSession.insert("Hi There!");
+        // go !
+        Parser parser = new Parser();
+        parser.setFirma(Parser.Firma.NOMBRE);
+        parser.setPasiva(Parser.Cantidad.MUCHO);
+
+        kSession.insert(parser);
         int rulesFired = kSession.fireAllRules();
         System.out.println("Rules Fired: "+rulesFired);
     }
