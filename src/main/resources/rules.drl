@@ -4,7 +4,60 @@ import ar.uba.fi.fallas.Parser;
 
 rule "Carta formal a un remitente sin relación personal del que no se conoce el nombre"
   when
-    $parser: Parser(pasiva == Parser.Cantidad.MUCHO)
+    $parser: Parser(
+        pasiva == Parser.Cantidad.MUCHO,
+        formal == Parser.Cantidad.MUCHO,
+        oraciones == Parser.Complejidad.COMPLEJA,
+        contracciones == Parser.Cantidad.NADA,
+        forma == Parser.Forma.SIR || forma == Parser.Forma.MADAM,
+        saludo == Parser.Cortesia.YOURS_SINCERELY || saludo == Parser.Cortesia.YOURS_FAITHFULLY,
+        firma == Parser.Firma.NOMBRE_APELLIDO
+    )
   then
     System.out.println("Carta formal a un remitente sin relación personal del que no se conoce el nombre");
+end
+
+rule "Carta formal a un remitente sin relación personal del que se conoce el nombre"
+  when
+    $parser: Parser(
+        pasiva == Parser.Cantidad.FRECUENTE,
+        formal == Parser.Cantidad.FRECUENTE,
+        oraciones == Parser.Complejidad.NORMAL,
+        contracciones == Parser.Cantidad.POCO,
+        forma == Parser.Forma.MR || forma == Parser.Forma.MS,
+        saludo == Parser.Cortesia.YOURS_SINCERELY || saludo == Parser.Cortesia.YOURS_FAITHFULLY,
+        firma == Parser.Firma.NOMBRE_APELLIDO
+    )
+  then
+    System.out.println("Carta formal a un remitente sin relación personal del que se conoce el nombre");
+end
+
+rule "Carta informal a un remitente sin relación personal"
+  when
+    $parser: Parser(
+        pasiva == Parser.Cantidad.POCO,
+        formal == Parser.Cantidad.POCO,        
+        oraciones == Parser.Complejidad.NORMAL,
+        contracciones == Parser.Cantidad.FRECUENTE,
+        forma == Parser.Forma.NOMBRE,
+        saludo == Parser.Cortesia.YOURS || saludo == Parser.Cortesia.REGARDS,
+        firma == Parser.Firma.NOMBRE        
+    )
+  then
+    System.out.println("Carta informal a un remitente sin relación personal");
+end
+
+rule "Carta informal a un remitente con relación personal"
+  when
+    $parser: Parser(
+        pasiva == Parser.Cantidad.NADA,
+        formal == Parser.Cantidad.NADA,        
+        oraciones == Parser.Complejidad.SIMPLE,
+        contracciones == Parser.Cantidad.MUCHO,
+        forma == Parser.Forma.NOMBRE || forma == Parser.Forma.APODO,
+        saludo == Parser.Cortesia.BEST_WISHES || saludo == Parser.Cortesia.LOVE,
+        firma == Parser.Firma.NOMBRE || firma == Parser.Firma.APODO        
+    )
+  then
+    System.out.println("Carta informal a un remitente con relación personal");
 end

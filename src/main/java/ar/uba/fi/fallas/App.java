@@ -20,8 +20,13 @@ public class App
         // The KieSession was injected so we can use it now
         // go !
         Parser parser = new Parser();
-        parser.setFirma(Parser.Firma.NOMBRE);
-        parser.setPasiva(Parser.Cantidad.MUCHO);
+        parser.setPasiva(Parser.Cantidad.FRECUENTE);
+        parser.setFormal(Parser.Cantidad.FRECUENTE);
+        parser.setOraciones(Parser.Complejidad.NORMAL);
+        parser.setContracciones(Parser.Cantidad.POCO);
+        parser.setForma(Parser.Forma.MR);
+        parser.setSaludo(Parser.Cortesia.YOURS_SINCERELY);
+        parser.setFirma(Parser.Firma.NOMBRE_APELLIDO);
 
         kSession.insert(parser);
         int rulesFired = kSession.fireAllRules();

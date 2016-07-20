@@ -8,7 +8,7 @@ public class Parser {
         SIMPLE, NORMAL, COMPLEJA
     }
 
-    public enum Formalidad {
+    public enum Forma {
         SIR, MADAM, MS, MR, NOMBRE, APODO
     }
 
@@ -22,7 +22,7 @@ public class Parser {
 
 
     private Cortesia saludo;
-    private Formalidad forma;
+    private Forma forma;
     private Complejidad oraciones;
     private Cantidad pasiva;
     private Cantidad formal;
@@ -46,11 +46,11 @@ public class Parser {
         this.oraciones = oraciones;
     }
 
-    public Formalidad getForma() {
+    public Forma getForma() {
         return forma;
     }
 
-    public void setForma(Formalidad forma) {
+    public void setForma(Forma forma) {
         this.forma = forma;
     }
 
