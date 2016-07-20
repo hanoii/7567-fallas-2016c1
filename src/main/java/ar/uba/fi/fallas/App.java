@@ -30,7 +30,7 @@ public class App
 
         kSession.insert(parser);
         int rulesFired = kSession.fireAllRules();
-        System.out.println("Rules Fired: "+rulesFired);
+        System.out.println("Reglas disparadas: " + rulesFired);
     }
 
     public static void main( String[] args )
